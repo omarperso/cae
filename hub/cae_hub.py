@@ -114,14 +114,22 @@ def list_devices() -> str:
 
 
 @mcp.tool()
-def pair_device(name: str, code: str) -> str:
+def pair_device(name: str, code: str, host: str = "", port: int = 8765) -> str:
     """Pair with a device using the 6-digit code it shows on its own screen.
-    Needed once per device; the token is saved afterwards."""
-    disc = {d["name"]: d for d in _discover()}
-    if name not in disc:
-        return f"'{name}' not visible on the network right now."
-    host, port = disc[name]["host"], disc[name]["port"]
-    r = requests.post(f"http://{host}:{port}/pair", json={"code": code}, timeout=10)
+    Needed once per device; the token is saved afterwards. If the device does
+    not show up in list_devices (mDNS blocked by a firewall), pass its IP as
+    host to pair directly."""
+    if not host:
+        disc = {d["name"]: d for d in _discover()}
+        if name not in disc:
+            return (f"'{name}' not visible on the network right now. If it is "
+                    "running, pass its IP address as host to pair directly.")
+        host, port = disc[name]["host"], disc[name]["port"]
+    try:
+        r = requests.post(f"http://{host}:{port}/pair", json={"code": code},
+                          timeout=10)
+    except requests.RequestException as e:
+        return f"Could not reach {host}:{port}: {e}"
     if r.status_code != 200:
         return f"Pairing failed: {r.json().get('error', r.text)}"
     store = _load()
