@@ -1,0 +1,5 @@
+zeroconf
+mss
+pyautogui
+requests
+mcp

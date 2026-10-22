@@ -1,0 +1,17 @@
+# CAE local state (per-machine tokens & pairing)
+.cae/
+hub.json
+token
+
+# Not part of CAE
+repo-quest/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
