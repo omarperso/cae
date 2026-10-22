@@ -1,0 +1,47 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CAE logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#141821"/>
+      <stop offset="1" stop-color="#0b0e14"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="120" y1="120" x2="392" y2="392" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5eb3ff"/>
+      <stop offset="1" stop-color="#3a7bff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="256" cy="256" r="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4da3ff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#4da3ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="1" y="1" width="510" height="510" rx="111" fill="none" stroke="#2a2f3a" stroke-width="2"/>
+  <circle cx="256" cy="256" r="150" fill="url(#glow)"/>
+
+  <!-- connection lines from hub to devices -->
+  <g stroke="url(#accent)" stroke-width="7" stroke-linecap="round" opacity="0.9">
+    <line x1="256" y1="256" x2="140" y2="150"/>
+    <line x1="256" y1="256" x2="372" y2="150"/>
+    <line x1="256" y1="256" x2="140" y2="372"/>
+    <line x1="256" y1="256" x2="372" y2="372"/>
+  </g>
+
+  <!-- device nodes -->
+  <g fill="#1b2130" stroke="url(#accent)" stroke-width="7">
+    <rect x="104" y="116" width="72" height="56" rx="10"/>
+    <rect x="336" y="116" width="72" height="56" rx="10"/>
+    <rect x="104" y="340" width="72" height="56" rx="10"/>
+    <rect x="336" y="340" width="72" height="56" rx="10"/>
+  </g>
+  <g fill="#4da3ff">
+    <circle cx="140" cy="186" r="4"/>
+    <circle cx="372" cy="186" r="4"/>
+    <circle cx="140" cy="410" r="4"/>
+    <circle cx="372" cy="410" r="4"/>
+  </g>
+
+  <!-- central hub -->
+  <circle cx="256" cy="256" r="60" fill="#0f131b" stroke="url(#accent)" stroke-width="8"/>
+  <circle cx="256" cy="256" r="26" fill="url(#accent)"/>
+  <text x="256" y="474" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700" fill="#e8edf5" letter-spacing="6">CAE</text>
+</svg>

@@ -1,6 +1,20 @@
-# 🌐 CAE — Claude Agent Everywhere
+<p align="center">
+  <img src="assets/banner.svg" alt="Claude Agent Everywhere" width="100%">
+</p>
 
-**Turn any computer on your network into a Claude agent — controlled from your main PC, in plain language.**
+<h1 align="center">🌐 CAE — Claude Agent Everywhere</h1>
+
+<p align="center">
+  <b>Turn any computer on your network into a Claude agent — controlled from your main PC, in plain language.</b>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-2b3a4f">
+  <img src="https://img.shields.io/badge/python-3.8%2B-4da3ff">
+  <img src="https://img.shields.io/badge/interface-MCP-6fbcff">
+  <img src="https://img.shields.io/badge/network-LAN%20only-2ecc71">
+  <img src="https://img.shields.io/badge/license-MIT-lightgrey">
+</p>
 
 Install a tiny node on another computer with **one command** (it even installs
 Python for you on a brand-new machine), pair it with a 6-digit code, and from
