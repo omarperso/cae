@@ -38,6 +38,7 @@ except ImportError:
     Zeroconf = None
 try:
     import mss  # fast screen capture
+    import mss.tools
 except ImportError:
     mss = None
 try:
@@ -138,7 +139,6 @@ class Handler(BaseHTTPRequestHandler):
             return None
         with mss.mss() as sct:
             shot = sct.grab(sct.monitors[0])
-            import mss.tools
             return mss.tools.to_png(shot.rgb, shot.size)
 
     def _html(self, status, text):
