@@ -39,11 +39,26 @@ computers **at once** — great for servers and multitasking.
 
 ---
 
-## 1. On each computer you want to control — ONE command
+## 1. On your main PC (the one with Claude) — just ask Claude
 
-Even on a fresh PC with nothing installed: the command installs Python if it's
-missing, installs everything else, opens a local interface in the browser, and
-shows a **6-digit pairing code**. Keep the window open.
+You don't run any commands yourself. Open Claude Code and **paste this prompt**:
+
+```text
+Install Claude Agent Everywhere on this computer and connect it to yourself:
+clone https://github.com/omarperso/cae, run `pip install -r requirements.txt`
+in it, then register the Hub with
+`claude mcp add cae -- python <full path>/hub/cae_hub.py`. Then restart so you
+can see the CAE tools.
+```
+
+Claude does the clone, the install and the wiring. After it restarts, it has
+the CAE tools and can control your other computers.
+
+## 2. On each computer you want to control — ONE command
+
+This is the only place you paste a command, because a brand-new PC has no Claude
+yet. It installs Python if missing, installs everything, opens a local page in
+the browser, and shows a **6-digit pairing code**. Keep the window open.
 
 **Windows — Command Prompt (cmd):**
 ```bat
@@ -60,37 +75,21 @@ iwr -useb https://raw.githubusercontent.com/omarperso/cae/main/install.ps1 | iex
 curl -fsSL https://raw.githubusercontent.com/omarperso/cae/main/install.sh | bash -s -- "My Laptop"
 ```
 
-A browser opens at `http://localhost:8765/` showing the device name and the
-pairing code.
+> 💡 Tip: you can even ask your *main* Claude to generate this line for a given
+> device, then run it on that device.
 
-## 2. On your main PC (the one with Claude) — download & connect
+## 3. Then just talk to Claude
 
-```bash
-# Download the project from GitHub
-git clone https://github.com/omarperso/cae.git
-cd cae
-
-# Install the Hub
-pip install -r requirements.txt
-```
-
-Then add the Hub to your Claude / Claude Code MCP config:
-```json
-{
-  "mcpServers": {
-    "cae": { "command": "python", "args": ["hub/cae_hub.py"] }
-  }
-}
-```
-
-## 3. Talk to it
+Everything after setup is plain language — no tools or commands to remember:
 
 > **You:** What devices can I control?
-> **Claude:** *(list_devices)* I see `Omar Thinkpad` (Windows) and `home-server` (Linux). Neither is paired.
+> **Claude:** I see `Omar Thinkpad` (Windows) and `home-server` (Linux). Neither is paired.
 > **You:** Pair the Thinkpad, the code is 418302.
-> **Claude:** *(pair_device)* Paired. ✅
+> **Claude:** Paired. ✅
 > **You:** Open its Gmail and tell me the unread subjects.
-> **Claude:** *(connect → screenshot → read)* Here's what's on screen…
+> **Claude:** *(takes control, screenshots, reads)* Here's what's on screen…
+> **You:** Show me the Thinkpad live.
+> **Claude:** Open this link to watch it: http://192.168.1.22:8765/stream
 
 ---
 
